@@ -27,13 +27,6 @@ SET time_zone = "+00:00";
 -- Estrutura para tabela `componentes_maq`
 --
 
-CREATE TABLE `componentes_maq` (
-  `id_componente` int NOT NULL,
-  `id_maquina` int DEFAULT NULL,
-  `nome_componente` varchar(100) DEFAULT NULL,
-  `horas_uso_acumulado` int DEFAULT NULL,
-  `limite_horas_alerta` int DEFAULT NULL
-) ;
 
 --
 -- Despejando dados para a tabela `componentes_maq`
@@ -52,13 +45,7 @@ INSERT INTO `componentes_maq` (`id_componente`, `id_maquina`, `nome_componente`,
 -- Estrutura para tabela `estoque_pecas`
 --
 
-CREATE TABLE `estoque_pecas` (
-  `id_peca` int NOT NULL,
-  `codigo_part_number` varchar(50) DEFAULT NULL,
-  `descricao` varchar(150) DEFAULT NULL,
-  `qtd_estoque` int DEFAULT NULL,
-  `preco_unitario` decimal(10,2) DEFAULT NULL
-) ;
+
 
 --
 -- Despejando dados para a tabela `estoque_pecas`
@@ -77,14 +64,7 @@ INSERT INTO `estoque_pecas` (`id_peca`, `codigo_part_number`, `descricao`, `qtd_
 -- Estrutura para tabela `historico_sensores`
 --
 
-CREATE TABLE `historico_sensores` (
-  `id_leitura` int NOT NULL,
-  `id_ordem` int DEFAULT NULL,
-  `temperatura_medida` decimal(5,2) DEFAULT NULL,
-  `vibracao_mm_s` decimal(5,2) DEFAULT NULL,
-  `data_hora_leitura` datetime DEFAULT NULL,
-  `prompt_geracao_ia` varchar(100) DEFAULT 'gerado_por_llm'
-) ;
+
 
 --
 -- Despejando dados para a tabela `historico_sensores`
@@ -103,12 +83,6 @@ INSERT INTO `historico_sensores` (`id_leitura`, `id_ordem`, `temperatura_medida`
 -- Estrutura para tabela `linhas_producao`
 --
 
-CREATE TABLE `linhas_producao` (
-  `id_linha` int NOT NULL,
-  `id_unidade` int DEFAULT NULL,
-  `nome_linha` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 --
 -- Despejando dados para a tabela `linhas_producao`
 --
@@ -126,14 +100,6 @@ INSERT INTO `linhas_producao` (`id_linha`, `id_unidade`, `nome_linha`) VALUES
 -- Estrutura para tabela `maquinas_senai`
 --
 
-CREATE TABLE `maquinas_senai` (
-  `id_maquina` int NOT NULL,
-  `id_linha` int DEFAULT NULL,
-  `id_tipo` int DEFAULT NULL,
-  `tag_patrimonio` varchar(30) DEFAULT NULL,
-  `data_aquisicao` date DEFAULT NULL,
-  `status_operacao` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `maquinas_senai`
@@ -152,14 +118,6 @@ INSERT INTO `maquinas_senai` (`id_maquina`, `id_linha`, `id_tipo`, `tag_patrimon
 -- Estrutura para tabela `ordens_servico`
 --
 
-CREATE TABLE `ordens_servico` (
-  `id_ordem` int NOT NULL,
-  `id_maquina` int DEFAULT NULL,
-  `id_tecnico` int DEFAULT NULL,
-  `data_abertura` datetime DEFAULT NULL,
-  `tipo_manutencao` varchar(20) DEFAULT NULL,
-  `status_os` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `ordens_servico`
@@ -178,13 +136,6 @@ INSERT INTO `ordens_servico` (`id_ordem`, `id_maquina`, `id_tecnico`, `data_aber
 -- Estrutura para tabela `pecas_os`
 --
 
-CREATE TABLE `pecas_os` (
-  `id_ordem` int NOT NULL,
-  `id_peca` int NOT NULL,
-  `qtd_utilizada` int DEFAULT NULL,
-  `preco_aplicado` decimal(10,2) DEFAULT NULL
-) ;
-
 --
 -- Despejando dados para a tabela `pecas_os`
 --
@@ -202,12 +153,6 @@ INSERT INTO `pecas_os` (`id_ordem`, `id_peca`, `qtd_utilizada`, `preco_aplicado`
 -- Estrutura para tabela `tecnicos`
 --
 
-CREATE TABLE `tecnicos` (
-  `id_tecnico` int NOT NULL,
-  `nome_tecnico` varchar(100) DEFAULT NULL,
-  `especialidade` varchar(50) DEFAULT NULL,
-  `nivel_certificacao` varchar(30) DEFAULT NULL
-) ;
 
 --
 -- Despejando dados para a tabela `tecnicos`
@@ -226,11 +171,6 @@ INSERT INTO `tecnicos` (`id_tecnico`, `nome_tecnico`, `especialidade`, `nivel_ce
 -- Estrutura para tabela `tipos_maquina`
 --
 
-CREATE TABLE `tipos_maquina` (
-  `id_tipo` int NOT NULL,
-  `nome_tipo` varchar(50) DEFAULT NULL,
-  `horas_revisao_padrao` int DEFAULT NULL
-) ;
 
 --
 -- Despejando dados para a tabela `tipos_maquina`
@@ -248,12 +188,6 @@ INSERT INTO `tipos_maquina` (`id_tipo`, `nome_tipo`, `horas_revisao_padrao`) VAL
 --
 -- Estrutura para tabela `unidades_senai`
 --
-
-CREATE TABLE `unidades_senai` (
-  `id_unidade` int NOT NULL,
-  `nome_unidade` varchar(100) NOT NULL,
-  `cidade` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `unidades_senai`
